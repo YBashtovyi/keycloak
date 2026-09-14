@@ -16,6 +16,8 @@
 Версія пакета — у `VERSION`; перевірена версія сервера — **23.0.7**.
 
 Докладне встановлення на сервер, Windows або Docker: [INSTALL.md](INSTALL.md).
+Інструкція для DevOps, включно з Kubernetes, перевіркою й відкатом: [DEVOPS.md](DEVOPS.md).
+Нове dev-середовище `auth2.kub.army` на Keycloak 23.0.7: [RUNBOOK-DEV.md](RUNBOOK-DEV.md).
 
 Для збірки потрібен лише Python 3.9 або новіший, без зовнішніх бібліотек.
 Із кореня репозиторію:
@@ -30,6 +32,8 @@ python3 custom-themes/build-package.py
 - `kub-theme-1.0.0.zip` — каталог `kub`, переносний інсталятор та документація.
 - `SHA256SUMS` — контрольні суми обох архівів.
 - `INSTALL.md` — інструкція встановлення.
+- `DEVOPS.md` — інструкція для DevOps; також входить до ZIP.
+- `RUNBOOK-DEV.md` — розгортання нового dev Keycloak, БД, TLS/DNS, перевірка й відновлення; також входить до ZIP.
 
 ZIP розпаковується в окрему папку `kub-theme-1.0.0/`; з неї можна виконати
 `bash install.sh /path/to/keycloak` або скопіювати `kub` вручну в `themes/`.

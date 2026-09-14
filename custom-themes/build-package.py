@@ -85,7 +85,7 @@ def main():
 
     prefix = f"kub-theme-{version}"
     zip_files = {f"{prefix}/kub/{name}": content for name, content in files.items()}
-    for name in ("README.md", "INSTALL.md", "VERSION", "install.sh", "THIRD-PARTY-NOTICES.md", "licenses/Apache-2.0.txt"):
+    for name in ("README.md", "INSTALL.md", "DEVOPS.md", "RUNBOOK-DEV.md", "VERSION", "install.sh", "THIRD-PARTY-NOTICES.md", "licenses/Apache-2.0.txt"):
         zip_files[f"{prefix}/{name}"] = (ROOT / name).read_bytes()
 
     args.output.mkdir(parents=True, exist_ok=True)
@@ -97,8 +97,9 @@ def main():
         checksums.append(f"{checksum}  {destination.name}\n")
         print(f"Created {destination} ({destination.stat().st_size:,} bytes)")
     (args.output / "SHA256SUMS").write_text("".join(checksums))
-    (args.output / "INSTALL.md").write_bytes((ROOT / "INSTALL.md").read_bytes())
-    print(f"Verified {len(files)} theme resources; SHA256SUMS and INSTALL.md written")
+    for name in ("INSTALL.md", "DEVOPS.md", "RUNBOOK-DEV.md"):
+        (args.output / name).write_bytes((ROOT / name).read_bytes())
+    print(f"Verified {len(files)} theme resources; SHA256SUMS, INSTALL.md, DEVOPS.md and RUNBOOK-DEV.md written")
 
 
 if __name__ == "__main__":
