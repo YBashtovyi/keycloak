@@ -1,0 +1,8 @@
+{
+  "themes": [
+    {
+      "name": "kub",
+      "types": ["login"]
+    }
+  ]
+}

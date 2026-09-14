@@ -1,106 +1,135 @@
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/ibm-plex-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/ibm-plex-sans-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/ibm-plex-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/ibm-plex-sans-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* KUB presentation only; authentication forms and scripts remain owned by Keycloak. */
 :root {
   color-scheme: dark;
-  --kub-bg: #1c212b;
-  --kub-field: #323742;
-  --kub-text: #f3f4f7;
-  --kub-muted: #b2b7c2;
-  --kub-link: #8aafff;
-  --kub-blue: #426fd9;
+  --kub-bg: #181a1e;
+  --kub-surface: #24272d;
+  --kub-field: #1b1e23;
+  --kub-border: #404650;
+  --kub-text: #c8ced8;
+  --kub-muted: #adb4bf;
+  --kub-link: #70d5bf;
+  --kub-accent: #0968ab;
+  --kub-accent-hover: #085e9c;
+  --kub-accent-active: #085b96;
+  --kub-error: #ffb3ba;
 }
-html.login-pf, .login-pf body { background: var(--kub-bg); }
+html.login-pf { background: var(--kub-bg); }
 .login-pf body {
-  margin: 0; color: var(--kub-text);
-  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  background: radial-gradient(ellipse at 50% 0%, #27344070, transparent 65%), var(--kub-bg);
+  color: var(--kub-text);
+  font: 16px/1.5 "IBM Plex Sans", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .login-pf-page {
-  min-height: 100vh; min-height: 100svh; padding: 120px 32px 140px;
-  display: flex; flex-direction: column; justify-content: center;
+  min-height: 100vh; min-height: 100svh; padding: 40px 24px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
-#kc-header { margin: 0 auto 38px; padding: 0; width: 100%; }
-#kc-header-wrapper { padding: 0; text-transform: none; letter-spacing: normal; }
-.kub-brand { display: block; color: var(--kub-text); font-size: 60px; line-height: 1; font-weight: 750; letter-spacing: .08em; }
-.kub-tagline { display: block; margin-top: 16px; color: var(--kub-muted); font-size: 13px; line-height: 1.5; letter-spacing: .16em; text-transform: uppercase; }
 .login-pf-page .card-pf {
-  width: 440px; max-width: 100%; margin: 0 auto; padding: 0;
-  background: transparent; border: 0; box-shadow: none;
+  box-sizing: border-box; width: 480px; max-width: 100%; margin: 0; padding: 24px 40px 28px;
+  background: var(--kub-surface); border: 1px solid #ffffff14; border-radius: 20px;
+  box-shadow: 0 24px 80px #00000030, 0 2px 8px #00000018;
 }
-.login-pf-page .login-pf-header { margin: 0 0 24px; padding: 0; }
-#kc-page-title { margin: 0; font-size: 21px; font-weight: 500; line-height: 1.4; }
-.kub-login-title, #kc-form-login > .form-group > label {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+.login-pf-page #kc-header { margin: 0 0 24px; padding: 0; width: 100%; }
+#kc-header-wrapper { display: flex; justify-content: center; padding: 0; text-transform: none; letter-spacing: normal; }
+.kub-logo-stage { position: relative; isolation: isolate; min-width: 0; max-width: 100%; }
+.kub-logo-stage::before {
+  content: ""; position: absolute; z-index: -1; inset: 0 -32px; pointer-events: none;
+  background: radial-gradient(ellipse at center, #9bb0c55c 0%, #829bb333 40%, transparent 72%);
 }
-.login-pf-header:has(.kub-login-title) { margin-bottom: 0; }
+.kub-logo { display: block; flex-shrink: 0; width: 328.509px; max-width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0 0 5px #bac8d32e); }
+
+.login-pf-page .login-pf-header { margin: 0 0 28px; padding: 0; text-align: center; }
+#kc-page-title { margin: 0; color: var(--kub-text); font-size: 26px; font-weight: 600; line-height: 1.3; letter-spacing: -.5px; }
+.login-pf-page .card-pf .kub-intro { margin: 10px auto 0; max-width: 320px; color: var(--kub-muted); font-size: 14px; line-height: 1.5; }
 #kc-content, #kc-content-wrapper { margin: 0; }
-#kc-form-login .form-group { margin-bottom: 14px; }
+#kc-form-login .form-group { margin-bottom: 20px; }
+.login-pf .pf-c-form__label, .login-pf label { color: var(--kub-text); font-size: 14px; font-weight: 500; }
+#kc-form-login > .form-group > label { display: block; margin-bottom: 8px; }
 .login-pf .form-control, .login-pf .pf-c-form-control {
-  min-height: 48px; height: auto; padding: 12px 16px;
-  background: var(--kub-field); color: var(--kub-text); border: 1px solid transparent;
-  border-radius: 3px; box-shadow: none; font: inherit;
+  min-height: 48px; height: auto; padding: 12px 14px;
+  background: var(--kub-field); color: var(--kub-text); border: 1px solid var(--kub-border);
+  border-radius: 10px; box-shadow: none; font: inherit;
 }
-.login-pf input::placeholder { color: #b4b7c0; opacity: 1; }
-.login-pf .form-control:focus, .login-pf .pf-c-form-control:focus { border-color: var(--kub-link); outline: 2px solid #8aafff40; outline-offset: 1px; }
-.login-pf input[aria-invalid="true"] { border-color: #f18f98; }
+.login-pf input::placeholder { color: var(--kub-muted); opacity: 1; }
+.login-pf .form-control:focus, .login-pf .pf-c-form-control:focus { border-color: var(--kub-link); outline: 3px solid #70d5bf22; outline-offset: 1px; }
+.login-pf input[aria-invalid="true"] { border-color: var(--kub-error); }
 .login-pf input:-webkit-autofill { -webkit-text-fill-color: var(--kub-text); -webkit-box-shadow: 0 0 0 100px var(--kub-field) inset; }
-.login-pf .pf-c-input-group { position: relative; display: flex; }
-.login-pf .pf-c-input-group input { min-width: 0; padding-right: 52px; width: 100%; }
+.login-pf .pf-c-input-group { position: relative; display: flex; background: transparent; border-radius: 10px; }
+.login-pf .pf-c-input-group input { min-width: 0; padding-right: 52px; width: 100%; border-radius: 10px; }
 .login-pf .pf-c-input-group button {
-  position: absolute; right: 0; top: 0; width: 48px; height: 48px;
-  color: var(--kub-muted); background: transparent; border: 0;
+  position: absolute; right: 3px; top: 3px; width: 44px; height: 44px; padding: 0;
+  color: var(--kub-muted); background: transparent; border: 0; border-radius: 8px;
 }
+.login-pf .pf-c-input-group button:hover { color: var(--kub-text); background: #ffffff08; }
 .login-pf .pf-c-input-group button::after { border: 0; }
 .login-pf .btn-primary, .login-pf .pf-m-primary {
-  min-height: 48px; padding: 12px 20px; background: var(--kub-blue); background-image: none;
-  color: white; border: 0; border-radius: 3px; box-shadow: none; font-size: 16px; font-weight: 600; text-shadow: none;
+  min-height: 48px; padding: 12px 20px; background: var(--kub-accent); background-image: none;
+  color: #dce2eb; border: 0; border-radius: 10px; box-shadow: none; font: inherit; font-weight: 600; text-shadow: none;
 }
-.login-pf .btn-primary:hover, .login-pf .pf-m-primary:hover { background: #527fe9; }
+.login-pf .btn-primary:hover, .login-pf .pf-m-primary:hover { background: var(--kub-accent-hover); }
+.login-pf .btn-primary:active, .login-pf .pf-m-primary:active { background: var(--kub-accent-active); }
 .login-pf .btn-primary:disabled { opacity: .6; cursor: wait; }
 .login-pf a { color: var(--kub-link); }
-.login-pf a:hover { color: #bad0ff; }
-.login-pf a:focus-visible, .login-pf button:focus-visible, .login-pf input[type="submit"]:focus-visible { outline: 2px solid var(--kub-link); outline-offset: 4px; }
-#kc-form-login { display: flex; flex-direction: column; }
-#kc-form-login .login-pf-settings { order: 2; margin: 2px 0 0; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-#kc-form-buttons { margin: 0; }
-#kc-form-options .checkbox { margin: 0; color: var(--kub-muted); }
-#kc-form-options input[type="checkbox"] { accent-color: var(--kub-blue); }
-.login-pf-page #kc-info-wrapper { margin: 16px 0 0; padding: 0; background: transparent; font-size: 14px; }
+.login-pf a:hover { color: #a1e7d8; }
+.login-pf a:focus-visible, .login-pf button:focus-visible, .login-pf input[type="submit"]:focus-visible { outline: 2px solid var(--kub-link); outline-offset: 3px; }
+#kc-form-login .login-pf-settings { margin: 0 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 13px; }
+#kc-form-login #kc-form-buttons { margin: 4px 0 0; }
+#kc-form-options .checkbox { margin: 0; }
+#kc-form-options .checkbox label { color: var(--kub-muted); font-size: 13px; font-weight: 400; }
+#kc-form-options input[type="checkbox"] { accent-color: var(--kub-accent); }
+.login-pf-page #kc-info-wrapper { margin: 20px 0 0; padding: 0; background: transparent; font-size: 13px; color: var(--kub-muted); }
 .login-pf-page #kc-info { margin: 0; }
-.login-pf .pf-c-form__label, .login-pf label { color: var(--kub-text); font-weight: 400; }
-.login-pf .pf-c-form__helper-text.pf-m-error, .login-pf .kc-feedback-text, #input-error { color: #ffb3ba; }
-.login-pf .pf-c-alert { margin-bottom: 20px; background: #302a34; border: 1px solid #78515c; border-radius: 3px; padding: 14px; }
-.login-pf .pf-c-alert.pf-m-success, .login-pf .pf-c-alert.pf-m-info { background: #253342; border-color: #526e8a; }
+.login-pf .pf-c-form__helper-text.pf-m-error, .login-pf .kc-feedback-text, #input-error { color: var(--kub-error); }
+#input-error { display: block; margin-top: 8px; font-size: 13px; }
+.login-pf .pf-c-alert { margin-bottom: 20px; background: #f871710a; border: 1px solid #78515c; border-radius: 10px; padding: 14px; }
+.login-pf .pf-c-alert.pf-m-success, .login-pf .pf-c-alert.pf-m-info { background: #70d5bf08; border-color: #3c6b5f; }
 .login-pf .pf-c-alert.pf-m-success .kc-feedback-text, .login-pf .pf-c-alert.pf-m-info .kc-feedback-text { color: var(--kub-text); }
-.kub-languages { position: absolute; top: 28px; right: 32px; display: flex; gap: 20px; align-items: center; font-size: 13px; }
-.kub-languages a { color: var(--kub-muted); text-decoration: none; padding: 8px 0; }
-.kub-languages a[aria-current="true"] { color: white; font-weight: 700; }
-.kub-languages a + a { border-left: 1px solid #454b57; padding-left: 20px; }
-.kub-notice { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); width: 260px; padding: 22px; border: 1px solid #363d49; border-radius: 3px; color: var(--kub-muted); font-size: 13px; line-height: 1.65; }
-.kub-notice h2 { margin: 0 0 12px; color: var(--kub-text); font-size: 14px; font-weight: 600; }
-.kub-notice p { margin: 0 0 12px; }
-.kub-notice p:last-child { margin-bottom: 0; }
-.kub-footer { position: absolute; right: 32px; bottom: 28px; max-width: 310px; color: var(--kub-muted); font-size: 13px; }
-.kub-footer strong { display: block; margin-bottom: 6px; color: var(--kub-text); font-weight: 600; }
-.kub-footer p { margin: 0; }
-.login-pf hr { border-color: #3d4450; }
-.login-pf .pf-c-login__main-footer-links-item { background: var(--kub-field); color: var(--kub-text); }
+.kub-footer { margin-top: 24px; padding-top: 22px; border-top: 1px solid #ffffff14; color: var(--kub-muted); font-size: 13px; line-height: 1.6; text-align: center; }
+.kub-footer strong { display: block; margin-bottom: 6px; color: var(--kub-text); font-weight: 500; }
+.login-pf-page .card-pf .kub-footer p { margin: 0; color: var(--kub-muted); }
+.kub-safety { width: 420px; max-width: 100%; margin: 20px 0 0; color: var(--kub-muted); font-size: 12px; line-height: 1.6; text-align: center; }
+.login-pf hr { border-color: var(--kub-border); }
+.login-pf .pf-c-login__main-footer-links-item { background: var(--kub-field); color: var(--kub-text); border-radius: 10px; }
 #kc-totp-settings { color: var(--kub-text); }
 #kc-totp-secret-qr-code { background: white; padding: 12px; max-width: 100%; }
-@media (max-width: 1180px) {
-  .login-pf-page { padding-top: 90px; padding-bottom: 36px; justify-content: flex-start; }
-  #kc-header { margin-top: 28px; }
-  .kub-notice { position: static; transform: none; width: 440px; max-width: 100%; margin: 40px auto 0; }
-  .kub-footer { position: static; max-width: 440px; margin: 28px auto 0; width: 100%; }
-}
 @media (max-width: 480px) {
-  .login-pf-page { padding: 72px 24px 28px; }
-  #kc-header { margin-top: 20px; margin-bottom: 32px; }
-  .kub-brand { font-size: 48px; }
-  .kub-tagline { font-size: 11px; }
-  .kub-languages { top: 12px; right: 24px; }
-  .kub-notice { margin-top: 32px; padding: 18px; }
-  #kc-form-login .login-pf-settings { font-size: 14px; }
+  .login-pf-page { padding: 24px 16px; }
+  .login-pf-page .card-pf { padding: 24px; border-radius: 16px; }
+  .kub-logo { width: 267.674px; }
+  .kub-logo-stage::before { inset-inline: -24px; }
+  .login-pf-page #kc-header { margin-bottom: 20px; }
+  #kc-page-title { font-size: 24px; }
+  .login-pf-page .login-pf-header { margin-bottom: 24px; }
 }
-@media (min-width: 1181px) and (max-height: 700px) {
-  .login-pf-page { justify-content: flex-start; padding-top: 72px; }
-  .kub-footer { position: static; align-self: flex-end; margin-top: 60px; }
+@media (max-width: 359px) {
+  .login-pf-page { padding: 16px 12px; }
+  .login-pf-page .card-pf { padding: 24px 20px; }
 }

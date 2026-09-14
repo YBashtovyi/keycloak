@@ -1,6 +1,6 @@
-<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false>
+<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false displayLoginIntro=false>
 <!DOCTYPE html>
-<html class="${properties.kcHtmlClass!}" lang="<#if realm.internationalizationEnabled>${locale.currentLanguageTag}<#else>en</#if>">
+<html class="${properties.kcHtmlClass!}" lang="uk">
 
 <head>
     <meta charset="utf-8">
@@ -49,19 +49,15 @@
 
 <body class="${properties.kcBodyClass!}">
 <div class="${properties.kcLoginClass!}">
-    <div id="kc-header" class="${properties.kcHeaderClass!}">
-        <div id="kc-header-wrapper"
-             class="${properties.kcHeaderWrapperClass!}"><span class="kub-brand">${msg("kubBrand")}</span><span class="kub-tagline">${msg("kubTagline")}</span></div>
-    </div>
     <div class="${properties.kcFormCardClass!}">
+        <figure id="kc-header" class="${properties.kcHeaderClass!}">
+            <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}">
+                <div class="kub-logo-stage">
+                    <img class="kub-logo" src="${url.resourcesPath}/img/kub-logo-hq.webp" alt="${msg("kubBrand")}" />
+                </div>
+            </div>
+        </figure>
         <header class="${properties.kcFormHeaderClass!}">
-            <#if realm.internationalizationEnabled && locale.supported?size gt 1>
-                <nav class="kub-languages" aria-label="${msg('kubLanguages')}">
-                    <#list locale.supported as l>
-                        <a href="${l.url}"<#if l.label == locale.current> aria-current="true"</#if>>${l.label}</a>
-                    </#list>
-                </nav>
-            </#if>
         <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
             <#if displayRequiredFields>
                 <div class="${properties.kcContentWrapperClass!}">
@@ -107,6 +103,9 @@
                 </div>
             </#if>
         </#if>
+        <#if displayLoginIntro>
+            <p class="kub-intro">${msg("kubLoginIntro")}</p>
+        </#if>
       </header>
       <div id="kc-content">
         <div id="kc-content-wrapper">
@@ -149,16 +148,12 @@
         </div>
       </div>
 
+        <footer class="kub-footer">
+            <strong>${msg("kubSupportTitle")}</strong>
+            <p>${msg("kubSupportBody")}</p>
+        </footer>
     </div>
-    <aside class="kub-notice" aria-labelledby="kub-access-title">
-        <h2 id="kub-access-title">${msg("kubAccessTitle")}</h2>
-        <p>${msg("kubAccessBody")}</p>
-        <p>${msg("kubAccessSafety")}</p>
-    </aside>
-    <footer class="kub-footer">
-        <strong>${msg("kubSupportTitle")}</strong>
-        <p>${msg("kubSupportBody")}</p>
-    </footer>
+    <p class="kub-safety">${msg("kubLoginSafety")}</p>
   </div>
 </body>
 </html>
